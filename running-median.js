@@ -5,46 +5,46 @@ function Heap() {
 }
 Heap.prototype.getLeftChildIndex = function (parentIndex) {
   return 2 * parentIndex + 1;     // Calculation is from heap structure theory
-}
+};
 Heap.prototype.getRightChildIndex = function (parentIndex) {
   return 2 * parentIndex + 2;     // Calculation is from heap structure theory
-}
+};
 Heap.prototype.getParentIndex = function (childIndex) {
   return Math.floor((childIndex - 1) / 2);    // Calculation is from heap structure theory
-}
+};
 Heap.prototype.hasLeftChild = function (index) {
   return this.getLeftChildIndex(index) < this.size();
-}
+};
 Heap.prototype.hasRightChild = function (index) {
   return this.getRightChildIndex(index) < this.size();
-}
+};
 Heap.prototype.hasParent = function (index) {
   return this.getParentIndex(index) >= 0;
-}
+};
 Heap.prototype.leftChild = function (index) {
   return this.items[this.getLeftChildIndex(index)];
-}
+};
 Heap.prototype.rightChild = function (index) {
   return this.items[this.getRightChildIndex(index)];
-}
+};
 Heap.prototype.parent = function (index) {
   return this.items[this.getParentIndex(index)];
-}
+};
 Heap.prototype.isEmpty = function (methodName) {
   if (this.size() == 0)
     throw new RangeError("Cannot perform '" + methodName + 
                                     "' on an empty Heap.");
-}
+};
 Heap.prototype.swap = function (index1, index2) {
   var temp = this.items[index1];
   this.items[index1] = this.items[index2];
   this.items[index2] = temp;
-}
+};
 // Look at the first element of the heap
 Heap.prototype.peek = function () {
   this.isEmpty("peek");
   return this.items[0];
-}
+};
 
 /* MaxHeap constructor that inherits from Heap. */
 function MaxHeap() {
@@ -72,7 +72,7 @@ MaxHeap.prototype.poll = function () {
     index = smallerIndex;
   }
   return data;
-}
+};
 /* Adds a new element at the bottom and checks if it is bigger than its parents.
   It swaps upwards untill it finds an element smaller or equal. */
 // Similar code below... Something more efficient???
@@ -82,7 +82,7 @@ MaxHeap.prototype.add = function (data) {
     this.swap(this.getParentIndex(index), index);
     index = this.getParentIndex(index);
   }
-}
+};
 
 /* MinHeap constructor that inherits from Heap. */
 function MinHeap() {
@@ -110,7 +110,7 @@ MinHeap.prototype.poll = function () {
     index = smallerIndex;
   }
   return data;
-}
+};
 /* Adds a new element at the bottom and checks if it is smaller than its parents.
   It swaps upwards untill it finds an element bigger or equal. */
 // Similar code above... Something more efficient???
@@ -120,7 +120,7 @@ MinHeap.prototype.add = function (data) {
     this.swap(this.getParentIndex(index), index);
     index = this.getParentIndex(index);
   }
-}
+};
 
 // Takes a number and adds it to the appropriate heap.
 function addNumber(number, maxH, minH) {
